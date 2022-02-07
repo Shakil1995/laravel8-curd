@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Product;
 
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -43,7 +44,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function product(){
-        return $this->hasOne(Product::class);
-            }
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }
