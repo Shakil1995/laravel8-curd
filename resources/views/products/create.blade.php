@@ -8,7 +8,7 @@
 <div class="row">
     <div class="col-lg-12 margin-tb" >
         <div class="pull-left">
-            <p>Add new Product </p>
+            <h3>Add new Product </h3>
           </div>
 
           <div class="pull-right">
@@ -41,14 +41,24 @@
 
         <div class="col-xs-12 col-sm-12 col-md-12" >
             <div class="form-group">
-                <strong>Name</strong>
-                <input type="text" class="form-control" placeholder="name" name="name">
+                <strong>User Name</strong>
+                <select class="form-control" name="user_id" required="">
+                    @foreach($user as $row)
+                      <option value="{{ $row->id }}">{{ $row->name }}</option>
+                    @endforeach
+                </select>
               </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12" >
             <div class="form-group">
-                <strong>Details</strong>
-                <textarea type="text" class="form-control" rows="4" cols="50" placeholder="Product detail" name="detail"></textarea>
+                <strong>Title</strong>
+                <input type="text" class="form-control" placeholder="product Title" name="name">
+              </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12" >
+            <div class="form-group">
+                <strong>description</strong>
+                <textarea type="text" class="form-control" rows="4" cols="50" placeholder="Product description" name="detail"></textarea>
               </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3" >

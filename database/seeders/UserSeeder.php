@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use GuzzleHttp\Promise\Create;
 use Illuminate\Database\Seeder;
-use App\Models\Product;
+use App\Models\User;
 
-class ProductSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +14,6 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        Product::Factory()->count(5)->Create();
+        User::Factory()->count(5)->Create();
     }
 }

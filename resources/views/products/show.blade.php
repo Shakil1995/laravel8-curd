@@ -14,13 +14,25 @@
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <strong>Name:</strong>
+            <strong>User Name : </strong>
+            {{ $product->user->name }}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>User Email</strong>
+            {{ $product->user->email }}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>user Job Title:</strong>
             {{ $product->name }}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <strong>Details:</strong>
+            <strong>job description:</strong>
             {{ $product->detail }}
         </div>
     </div>

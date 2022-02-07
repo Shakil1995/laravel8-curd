@@ -21,13 +21,15 @@
     <table class="table table-bordered">
         <tr>
             <th>SL NO</th>
-            <th>Name</th>
-            <th>Details</th>
+            <th>User Name</th>
+            <th>Title</th>
+            <th>description</th>
             <th width="280px">Action</th>
         </tr>
         @foreach ($products as $key=>$product)
         <tr>
             <td>{{  $key+1 }}</td>
+            <td>{{ $product->user->name }}</td>
             <td>{{ $product->name }}</td>
             <td>{{ $product->detail }}</td>
             <td>

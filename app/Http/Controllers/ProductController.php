@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -14,21 +15,22 @@ class ProductController extends Controller
      */
     public function index()
     {
-  $products=Product::latest()->paginate('10');
-//   return json_decode('$product');
-  return view('products.index',compact('products'))->with(request()->input('page'));
+  $products=Product::latest()->paginate('5');
+  $user=User::all();
+  return view('products.index',compact('products','user'))->with(request()->input('page'));
 
     }
 
     public function create()
     {
-        return view('products.create');
+        $user=User::all();
+        return view('products.create',compact('user'));
     }
 
    
     public function store(Request $request)
     {
-    //    dd($request);
+//    dd($request);
         $validated = $request->validate([
             'name' => 'required',
             'detail' => 'required',
@@ -42,13 +44,15 @@ class ProductController extends Controller
   
     public function show(Product $product)
     {
-        return view('products.show',compact('product'));
+        $user=User::all();
+        return view('products.show',compact('product','user'));
     }
 
   
     public function edit(Product $product)
     {
-        return view('products.edit',compact('product'));
+        $user=User::all();
+        return view('products.edit',compact('product','user'));
     }
 
     public function update(Request $request, Product $product)
