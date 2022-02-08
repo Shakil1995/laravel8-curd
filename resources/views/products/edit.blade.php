@@ -35,15 +35,29 @@
                 {{ $product->user->name }}
             </div>
         </div>
+
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Job Title:</strong>
+                <strong>Category:</strong>
+                <select class="form-control" name="category_id" required="">
+                    @foreach($Categorys as $row)
+                      <option value="{{ $row->category_id }}"   @if($row->id==$product->category_id) selected="" @endif   >{{ $row->category_name }}</option>
+                    @endforeach
+                </select>
+
+                {{-- <input type="text" name="name" value="{{ $product->category->category_name }}" class="form-control" placeholder="Name"> --}}
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Product title:</strong>
                 <input type="text" name="name" value="{{ $product->name }}" class="form-control" placeholder="Name">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong> Job description :</strong>
+                <strong>  description :</strong>
                 <textarea class="form-control" style="height:150px" name="detail" placeholder="description">{{ $product->detail }}</textarea>
             </div>
         </div>

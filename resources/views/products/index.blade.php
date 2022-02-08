@@ -1,10 +1,11 @@
+
 @extends('products.layout')
 
 @section('content')
     <div class="row">
         <div class="col-lg-12">
             <div class="pull-left">
-                <h2>Laravel 8 CRUD Example</h2>
+                <h2>Product Detalis </h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('products.create') }}"> Create New Product</a>
@@ -21,15 +22,17 @@
     <table class="table table-bordered">
         <tr>
             <th>SL NO</th>
-            <th>User Name</th>
-            <th>Title</th>
+            <th>User Name </th>
+            <th>Category Name</th>
+            <th>Product title</th>
             <th>description</th>
             <th width="280px">Action</th>
         </tr>
         @foreach ($products as $key=>$product)
         <tr>
             <td>{{  $key+1 }}</td>
-            <td>{{ $product->user->name }}</td>
+            <td>{{ $product->user->name  ?? 'None'}}</td>
+            <td>{{ $product->category->category_name ?? 'None' }}</td>
             <td>{{ $product->name }}</td>
             <td>{{ $product->detail }}</td>
             <td>

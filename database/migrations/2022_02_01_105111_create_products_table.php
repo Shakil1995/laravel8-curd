@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             // $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('user_id')->nullable();
+            $table->string('category_id')->nullable();
             $table->string('name')->nullable();
             $table->text('detail')->nullable();
             $table->timestamps();

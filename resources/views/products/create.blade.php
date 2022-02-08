@@ -43,10 +43,22 @@
             <div class="form-group">
                 <strong>User Name</strong>
                 <select class="form-control" name="user_id" required="">
-                    @foreach($user as $row)
+                    @foreach($users as $row)
                       <option value="{{ $row->id }}">{{ $row->name }}</option>
                     @endforeach
                 </select>
+              </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12" >
+            <div class="form-group">
+                <strong>Product Category</strong>
+                <select class="form-control" name="category_id" required="">
+                    @foreach($categorys as $row)
+                      <option  value="{{ $row->id }}" >{{ $row->category_name }}</option>
+                    @endforeach
+                 </select>
+            
+
               </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12" >
