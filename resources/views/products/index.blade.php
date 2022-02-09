@@ -25,7 +25,8 @@
             <th>User Name </th>
             <th>Category Name</th>
             <th>Product title</th>
-            <th>description</th>
+            {{-- <th>description</th> --}}
+            <th>Images</th>
             <th width="280px">Action</th>
         </tr>
         @foreach ($products as $key=>$product)
@@ -34,7 +35,9 @@
             <td>{{ $product->user->name  ?? 'None'}}</td>
             <td>{{ $product->category->category_name ?? 'None' }}</td>
             <td>{{ $product->name }}</td>
-            <td>{{ $product->detail }}</td>
+            {{-- <td>{{ $product->detail }}</td>           --}}
+            {{-- <td><img src= "{{URL::to($product->product_img)}}" height="40" width="70"></td> --}}
+            <td><img src="{{ asset($product->product_img)}}" height="40" width="70"></td>
             <td>
                 <form action="{{ route('products.destroy',$product->id) }}" method="POST">
                     <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a>

@@ -35,7 +35,7 @@
 
 
 
-<form action="{{ route('products.store') }}" method="POST">
+<form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="row">
 
@@ -73,19 +73,18 @@
                 <textarea type="text" class="form-control" rows="4" cols="50" placeholder="Product description" name="detail"></textarea>
               </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3" >
-            
-                <button type="submit" class="btn btn-primary"  >Submit</button>
-           
+        <div class="col-xs-12 col-sm-12 col-md-12" >
+            <div class="form-group">
+                <strong>Image</strong>
+                <input type="file" class="form-control" placeholder="product Images" name="product_img">
+              </div>
         </div>
 
-
+          <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3" >           
+                <button type="submit" class="btn btn-primary"  >Submit</button>
+          </div>
 
     </div>
-
-
-
-
 
 </form>
 

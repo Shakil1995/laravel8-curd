@@ -15,19 +15,25 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>User Name : </strong>
-            {{ $product->user->name }}
+            {{ $product->user->name  ?? 'None' }}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>User Email</strong>
-            {{ $product->user->email }}
+            {{ $product->user->email  ?? 'None' }}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong> Category</strong>
+            {{ $product->category->category_name   ?? 'None'}}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Product  Title:</strong>
-            {{ $product->name }}
+            {{ $product->name   ?? 'None'}}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
