@@ -15,13 +15,9 @@ class ProductController extends Controller
     public function index()
     {
         $viewBag['products'] = Product::latest()->paginate('5');
-    //     $viewBag['user'] = User::findOrFail(1)->products;
-    //     return $viewBag['user'];
-//  return $viewBag;
-           return view('products.index', $viewBag);//->with(request()->input('page'));
-    
-  
-    }
+           return view('products.index', $viewBag);
+
+        }
 
     public function create()
     {
@@ -81,7 +77,6 @@ class ProductController extends Controller
             'detail' => 'required',
         ]);
 
-        // $product->update($request->all());
         $product->update([
             'user_id'=> $request->user_id,
            'category_id'=> $request->category_id,
