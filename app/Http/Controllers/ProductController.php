@@ -8,16 +8,17 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
+use File;
+
 
 class ProductController extends Controller
 {
- 
+
     public function index()
     {
         $viewBag['products'] = Product::latest()->paginate('5');
-           return view('products.index', $viewBag);
-
-        }
+        return view('products.index', $viewBag);
+    }
 
     public function create()
     {
@@ -29,7 +30,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-//  dd($request);
+
         $validated = $request->validate([
             'name' => 'required',
             'detail' => 'required',
@@ -37,20 +38,17 @@ class ProductController extends Controller
         ]);
 
 
-    $slug=Str::slug($request->name, '-');
-    $photo=$request->product_img;
-    $photoname=$slug.'.'.$photo->getClientOriginalExtension();
-    $img = Image::make($photo)->resize(320, 240)->save( public_path('files/images/' .$photoname));
+        $photo = $request->product_img;
+        $photoname = uniqid() . '.' . $photo->getClientOriginalExtension();
+        Image::make($photo)->resize(320, 240)->save(public_path('files/images/' . $photoname));
 
-     
-// dd( $image);
-           Product::insert([
-                'user_id'=> $request->user_id,
-                'category_id'=> $request->category_id,
-                'name'=> $request->name,
-                'detail'=>$request->detail,
-                'product_img'=> 'files/images/'.$photoname,
-                ]);
+        Product::insert([
+            'user_id' => $request->user_id,
+            'category_id' => $request->category_id,
+            'name' => $request->name,
+            'detail' => $request->detail,
+            'product_img' => 'files/images/' . $photoname,
+        ]);
 
         return redirect()->route('products.index')->with('success', 'Product Add Successfully ');
     }
@@ -58,15 +56,16 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
-        return view('products.show', compact('product'));
+        $viewBag['products'] = $product;
+        return view('products.show', $viewBag);
     }
 
 
     public function edit(Product $product)
     {
-        $viewBag['users']= User::all();
-        $viewBag['categorys']=Category::all(); 
-        $viewBag['product']= $product;
+        $viewBag['users'] = User::all();
+        $viewBag['categories'] = Category::all();
+        $viewBag['products'] = $product;
         return view('products.edit',  $viewBag);
     }
 
@@ -76,23 +75,42 @@ class ProductController extends Controller
             'name' => 'required',
             'detail' => 'required',
         ]);
+        $oldImage = $request->oldImage;
+        $photo = $request->product_img;
+        if ($photo) {
+            $photoname = uniqid() . '.' . $photo->getClientOriginalExtension();
+            Image::make($photo)->resize(320, 240)->save(public_path('files/images/' . $photoname));
 
-        $product->update([
-            'user_id'=> $request->user_id,
-           'category_id'=> $request->category_id,
-           'name'=> $request->name,
-           'detail'=>$request->detail,
-         
-    ]);
+            $product->category_id = $request->category_id;
+            $product->name = $request->name;
+            $product->detail = $request->detail;
+            $product->product_img = 'files/images/' . $photoname;
+            if ($product->isDirty()) {
+                $product->update();
+            }
 
-        return redirect()->route('products.index')
-            ->with('success', 'Product updated successfully');
+            unlink($oldImage);
+
+            return redirect()->route('products.index')
+                ->with('success', 'Product updated successfully');
+        } else {
+            $product->category_id = $request->category_id;
+            $product->name = $request->name;
+            $product->detail = $request->detail;
+            if ($product->isDirty()) {
+                $product->update();
+            }
+
+            return redirect()->route('products.index')
+                ->with('success', 'Product updated successfully');
+        }
     }
 
 
 
     public function destroy(Product $product)
     {
+        unlink($product->product_img);
         $product->delete();
 
         return redirect()->route('products.index')

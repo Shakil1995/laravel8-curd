@@ -10,36 +10,41 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-md-12">
+        <img src="{{ asset($products->product_img)}}" height="200" width="300">
+    </div>
+</div>
 
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>User Name : </strong>
-            {{ $product->user->name  ?? 'None' }}
+            {{ $products->user->name  ?? 'None' }}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>User Email</strong>
-            {{ $product->user->email  ?? 'None' }}
+            {{ $products->user->email  ?? 'None' }}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong> Category</strong>
-            {{ $product->category->category_name   ?? 'None'}}
+            {{ $products->category->category_name   ?? 'None'}}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Product  Title:</strong>
-            {{ $product->name   ?? 'None'}}
+            {{ $products->name   ?? 'None'}}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Product description:</strong>
-            {{ $product->detail }}
+            {{ $products->detail }}
         </div>
     </div>
 </div>

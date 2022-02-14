@@ -26,7 +26,7 @@
         
             <th width="280px">Action</th>
         </tr>
-        @foreach ($categorys as $key=>$category)
+        @foreach ($categories as $key=>$category)
         <tr>
             <td>{{  $key+1 }}</td>         
             <td>{{ $category->category_name }}</td>
@@ -43,7 +43,7 @@
         @endforeach
 
     </table>
-    {{ $categorys->links() }}
+    {{ $categories->links() }}
 
 
 @endsection
