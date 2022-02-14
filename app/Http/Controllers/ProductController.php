@@ -16,7 +16,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        $viewBag['products'] = Product::latest()->paginate('5');
+        $viewBag['products'] = Product::all();
         return view('products.index', $viewBag);
     }
 

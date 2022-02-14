@@ -19,18 +19,26 @@
         </div>
     @endif
 
-    <table class="table table-bordered">
-        <tr>
-            <th>SL NO</th>
-            <th>Category</th>
-        
-            <th width="280px">Action</th>
-        </tr>
-        @foreach ($categories as $key=>$category)
+    
+
+
+    <table id="example" class="display mt-5" style="width:100%">
+        <thead>
+            <tr class="text-center bg-secondary">
+                <th>SL NO</th>
+                <th>Category</th>
+            
+                <th width="280px">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+           
+            @foreach ($categories as $key=>$category)
         <tr>
             <td>{{  $key+1 }}</td>         
             <td>{{ $category->category_name }}</td>
-            <td>
+            <td class="text-center">
                 <form action="{{ route('categorys.destroy',$category->id) }}" method="POST">
                     <a class="btn btn-info" href="{{ route('categorys.show',$category->id) }}">Show</a>
                     <a class="btn btn-primary" href="{{ route('categorys.edit',$category->id) }}">Edit</a>
@@ -42,8 +50,14 @@
         </tr>
         @endforeach
 
-    </table>
-    {{ $categories->links() }}
+        </tbody>
+    
+    </table> 
 
 
+    <script type="text/javascript">
+            $(document).ready(function() {
+                $('#example').DataTable();
+} );
+    </script>
 @endsection

@@ -10,10 +10,9 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $viewBag['categories'] = Category::latest()->paginate('5');
+        $viewBag['categories'] = Category::all();
 
-        return view('category.index', $viewBag); //->with(request()->input('page'));
-        // return view('category.index');
+        return view('category.index', $viewBag);
     }
 
 
@@ -25,7 +24,7 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-        //  dd($request);
+        
         $validated = $request->validate([
             'category_name' => 'required',
         ]);
@@ -51,7 +50,6 @@ class CategoryController extends Controller
 
     public function update(Request $request, Category $category)
     {
-        // dd($request);
         $request->validate([
             'category_name' => 'required',
         ]);
