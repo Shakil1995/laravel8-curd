@@ -54,7 +54,10 @@ class CategoryController extends Controller
             'category_name' => 'required',
         ]);
 
-        $category->update($request->all());
+        $category->category_name = $request->category_name;
+        if ($category->isDirty()) {
+            $category->update();
+        }
 
         return redirect()->route('categorys.index')
             ->with('success', 'category updated successfully');

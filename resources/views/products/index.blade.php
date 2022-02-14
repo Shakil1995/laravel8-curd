@@ -2,14 +2,13 @@
 @extends('products.layout')
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="pull-left">
-                <h2>Product Detalis </h2>
+    <div class="row mb-3">
+        <div class="col-md-6">
+             <h2>Product Detalis </h2>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('products.create') }}"> Create New Product</a>
-            </div>
+            <div class="col-md-6 d-flex justify-content-end">
+              <a class="btn btn-success" href="{{ route('products.create') }}"> Create New Product</a>
+        
         </div>
     </div>
 
@@ -20,7 +19,7 @@
     @endif
 
   
- <table id="example" class="display" style="width:100%">
+ <table id="example" class="display mt-4" style="width:100%">
         <thead>
             <tr  class="text-center bg-secondary">
             <th>SL NO</th>
@@ -40,8 +39,7 @@
             <td>{{  $key+1 }}</td>
             <td>{{ $product->user->name  ?? 'None'}}</td>
             <td>{{ $product->category->category_name ?? 'None' }}</td>
-            <td>{{ $product->name }}</td>
-            
+            <td>{{ $product->name }}</td> 
             <td class="text-center"><img src="{{ asset($product->product_img)}}" height="40" width="70"></td>
             <td>
                 <form action="{{ route('products.destroy',$product->id) }}" method="POST" class="text-center">
