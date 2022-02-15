@@ -15,7 +15,7 @@
     <div class="text-center">
 
     </div>
-    <nav class="navbar container navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar container navbar-expand-lg navbar-light " style="background-color: rgb(117, 115, 115)">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ URL::to('/') }}">E-com</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"

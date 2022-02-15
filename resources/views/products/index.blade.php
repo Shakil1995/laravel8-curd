@@ -7,9 +7,8 @@
              <h2>Product Detalis </h2>
             </div>
             <div class="col-md-6 d-flex justify-content-end">
-              <a class="btn btn-success" href="{{ route('products.create') }}"> Create New Product</a>
-        
-        </div>
+              <a class="btn btn-success" href="{{ route('products.create') }}"> Create New Product</a> 
+           </div>
     </div>
 
     @if ($message = Session::get('success'))
@@ -19,7 +18,7 @@
     @endif
 
   
- <table id="example" class="display mt-4" style="width:100%">
+ <table id="datatable" class="display mt-4 table-sm" style="width:100%">
         <thead>
             <tr  class="text-center bg-secondary">
             <th>SL NO</th>
@@ -49,7 +48,14 @@
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
-            </td>
+            {{-- </td>
+            <td  class="text-center >
+         
+                    <a class="" href="{{ route('products.show',$product->id) }}"><i class="fas fa-eye"> </i></a>
+                    <a class="" href="{{ route('products.edit',$product->id) }}"><i class="fas fa-edit"> </i></a>
+                    <a class="" href="{{ route('products.destroy',$product->id) }}"><i class="fas fa-trash"> </i></a>
+                   
+            </td> --}}
         </tr>
         @endforeach
         </tbody>
@@ -59,7 +65,7 @@
 
     <script type="text/javascript">
             $(document).ready(function() {
-                $('#example').DataTable();
+                $('#datatable').DataTable();
 } );
     </script>
 

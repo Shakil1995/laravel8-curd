@@ -3,9 +3,9 @@
 
 @section('content')
 
-    <nav class="navbar container navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar container navbar-expand-lg navbar-light " style="background-color: rgb(117, 115, 115)">
         <div class="container-fluid">
-          <a class="navbar-brand" href="{{URL::to('/')}}">E-com</a>
+          <a class="navbar-brand" href="{{URL::to('/')}}"><b>E-com</b></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>

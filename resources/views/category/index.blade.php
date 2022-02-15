@@ -1,14 +1,13 @@
 @extends('category.layout')
 
 @section('content')
-    <div class="row">
-        <div class="col-md-6">
+    <div class="row mb-3">
+        <div class="col-md-6 ">
             <h2>Product Detalis </h2>
            </div>
            <div class="col-md-6 d-flex justify-content-end">
-             <a class="btn btn-success" href="{{ route('categorys.create') }}"> Create New Product</a>
-       
-       </div>
+                <a class="btn btn-success" href="{{ route('categorys.create') }}"> Create New Product</a>
+           </div>
     </div>
 
     @if ($message = Session::get('success'))
@@ -17,7 +16,7 @@
         </div>
     @endif
 
-    <table id="example" class="display  mt-4" style="width:100%">
+    <table id="datatable" class="display  table-sm  " style="width:100%">
         <thead>
             <tr class="text-center bg-secondary">
                 <th>SL NO</th>
@@ -52,7 +51,7 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#example').DataTable();
+            $('#datatable').DataTable();
         });
     </script>
 @endsection
