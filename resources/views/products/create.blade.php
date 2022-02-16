@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h3>Add new Product </h3>
+                <h3>Add new Category </h3>
             </div>
 
             <div class="pull-right">

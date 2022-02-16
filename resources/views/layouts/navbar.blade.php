@@ -19,7 +19,7 @@
               </li>
            
               <li class="nav-item">
-                <a class="nav-link active ">User</a>
+                <a class="nav-link active " href="{{ URL::to('/subCategorys') }}">Sub Category</a>
               </li>
             </ul>
             
