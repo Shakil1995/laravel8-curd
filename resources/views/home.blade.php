@@ -19,10 +19,11 @@
 
 </head>
 
-<body>
+<body class="container">
     @include('Layouts.navbar')
 
     @yield('content')
+
     <div class="row  mt-2 container d-flex justify-content-center">
         @foreach ($products as $product)
             <div class="col-md-3 mt-3  ">

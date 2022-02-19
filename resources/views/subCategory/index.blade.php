@@ -31,7 +31,7 @@
             @foreach ($subCategorys as $key => $subCategory)
                 <tr>
                     <td>{{ $key + 1 }}</td>
-                    <td>{{ $subCategory->category_id }}</td>
+                    <td>{{ $subCategory->category->category_name ?? 'None' }}</td>
                     <td>{{ $subCategory->SubCategory_name }}</td>
                     <td class="text-center">
                         <form action="{{ route('subCategorys.destroy', $subCategory->id) }}" method="POST">

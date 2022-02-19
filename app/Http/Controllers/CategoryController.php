@@ -10,7 +10,7 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $viewBag['categories'] = Category::all();
+        $viewBag['categories'] = Category::orderBy('id','desc')->get();
 
         return view('category.index', $viewBag);
     }

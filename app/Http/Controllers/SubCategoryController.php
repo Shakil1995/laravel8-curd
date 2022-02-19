@@ -13,7 +13,7 @@ class SubCategoryController extends Controller
     {
     // $subCategories = Category::all();
     //      return  $subCategories;
-     $viewBag['subCategorys'] = SubCategory::all();
+     $viewBag['subCategorys'] = SubCategory::orderBy('id','desc')->get();
 
         return view('subCategory.index',$viewBag);
     }
@@ -61,6 +61,9 @@ class SubCategoryController extends Controller
   
     public function destroy(SubCategory $subCategory)
     {
-        //
+        $subCategory->delete();
+
+        return redirect()->route('subCategorys.index')
+            ->with('success', 'SubCategory deleted successfully');
     }
 }
