@@ -3,7 +3,7 @@
 @section('content')
     <div class="row mb-3">
         <div class="col-md-6 ">
-            <h2>Product Detalis </h2>
+            <h2>Category List </h2>
            </div>
            <div class="col-md-6 d-flex justify-content-end">
                 <a class="btn btn-success" href="{{ route('categorys.create') }}"> Create New Product</a>

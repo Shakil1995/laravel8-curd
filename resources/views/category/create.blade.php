@@ -1,17 +1,14 @@
 @extends('category.layout')
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h3>Add new Product </h3>
-            </div>
-
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('categorys.index') }}">Back</a>
-            </div>
-        </div>
-    </div>
+<div class="row mb-3">
+    <div class="col-md-6 ">
+        <h2>Add new Category </h2>
+       </div>
+       <div class="col-md-6 d-flex justify-content-end">
+            <a class="btn btn-success" href="{{ route('categorys.index') }}">  Back</a>
+       </div>
+</div>
 
     @if ($errors->any())
         <div class="alert alert-danger">

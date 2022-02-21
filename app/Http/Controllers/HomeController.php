@@ -15,4 +15,13 @@ class HomeController extends Controller
     
   
     }
+    public function viewProduct( Request $request ,$id)
+    {
+        $id= $request->id;
+        // dd($id);
+        $viewBag['products'] = Product::where('id','=',$id)->first();
+        return view('single-product',$viewBag);
+    
+  
+    }
 }

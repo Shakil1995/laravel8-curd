@@ -14,3 +14,5 @@ Route::resource('products',ProductController::class);
 Route::resource('categorys',CategoryController::class);
 
 Route::resource('subCategorys',SubCategoryController::class);
+
+Route::get('view-product/{id}/{slug}', [HomeController::class, 'viewProduct']); 

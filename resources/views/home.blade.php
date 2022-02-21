@@ -8,37 +8,38 @@
     <title>E-com</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
         .mySlides {
             display: none;
         }
-
+        .name {text-decoration: none;}
     </style>
-
 </head>
 
 <body class="container">
     @include('Layouts.navbar')
-
-    @yield('content')
+     @yield('content')
 
     <div class="row  mt-2 container d-flex justify-content-center">
         @foreach ($products as $product)
             <div class="col-md-3 mt-3  ">
+      @php
+	$slug=preg_replace('/\s+/u', '-',trim($product->name) );
+	// dd($slug);
+@endphp
                 <div class="card  " style="background-color: rgb(216, 213, 213)">
                     <img style="width: auto; height:200px " src="{{ asset($product->product_img) }}"
                         class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 style="height: 50px" class="card-title"><b>{{ $product->name }}</b></h5>
+                      <a class="name" href="{{URL::to('view-product/'.$product->id.'/'.$slug)}}"> <h6 style="height: 50px" class="card-title"><b>{{ $product->name }}</b></h6></a> 
                         <h3><b>$140</b></h3>
                         <div class="row  p-2 " style="background-color: #d9d9d9">
                             <div class="col-md-6">
-                                <a href="{{ route('products.show', $product->id) }}" class="btn btn-primary">Detalis</a>
+                                <a href="{{URL::to('view-product/'.$product->id.'/'.$slug)}}" class="btn btn-primary">Detalis</a>
                             </div>
                             <div class="col-md-6 d-flex justify-content-end">
-                                <a class="btn btn-success" href="#"> Buy Now</a>
+                                <a class="btn btn-success" href=""> Buy</a>
                             </div>
                         </div>
 
